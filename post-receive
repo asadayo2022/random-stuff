@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# where I'm from, git is a deployment tool you use in production
+git clone /home/git/tools.git
+git archive master --format=zip --output=tools.git.zip
+mv -f tools.git.zip /var/www/website.com/html/files
