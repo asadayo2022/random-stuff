@@ -1,0 +1,11 @@
+python stable-diffusion-webui/webui.py --lowvram --precision full --no-half
+
+rsync -r --progress
+
+instaloader username1 username2 --login "username" --password "" --no-videos --no-video-thumbnails --no-captions --no-metadata-json --no-profile-pic --slide 1 --filename-pattern="{shortcode}"
+
+youtube-dl -e -j --flat-playlist 'playlist link' | cut -d " " -f 8 | awk -F'"' '{print $2}' | awk '{if(NF>0) {print $0}}' > links.txt
+
+tmux attach-session -t 0
+
+du -shc /* | sort -h
